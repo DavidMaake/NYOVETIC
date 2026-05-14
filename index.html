@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>NYOVETIC</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h1 class="logo">NYOVETIC</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="#freshdrops">Fresh Drops</a></li>
+      <li><a href="#artists">Artists</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero" id="home">
+
+    <h2>Feel The Music Through Lyrics</h2>
+
+    <p>
+      Discover trending songs, fresh drops, and your favorite lyrics.
+    </p>
+
+    <!-- SEARCH BAR -->
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search songs or artists..."
+      >
+
+      <button id="searchButton">
+        Search
+      </button>
+
+    </div>
+
+    <div id="suggestions"></div>
+
+  </section>
+
+  <!-- RECENT SEARCHES -->
+
+  <!-- FAVORITES -->
+
+<section class="section">
+
+  <h2>❤️ Saved Songs</h2>
+
+  <div id="favoritesContainer" class="song-container"></div>
+
+</section>
+
+  <!-- FRESH DROPS -->
+
+  <section class="section" id="freshdrops">
+
+    <h2>🔥 Fresh Drops</h2>
+
+    <div class="song-container">
+
+      <div class="song-card">
+
+        <img src="images/travis.png" alt="FE!N Cover">
+
+        <h3>FE!N</h3>
+        <p>Travis Scott</p>
+
+        <a href="songs/fein.html">
+          View Lyrics
+        </a>
+        <button
+  class="save-btn"
+  onclick="saveFavorite('FE!N', 'Travis Scott', 'songs/fein.html')"
+>
+  ❤️ Save Song
+</button>
+
+      </div>
+
+      <div class="song-card">
+
+        <img src="images/the wekend.webp" alt="Blinding Lights Cover">
+
+        <h3>Blinding Lights</h3>
+        <p>The Weeknd</p>
+
+        <a href="#">
+          View Lyrics
+        </a>
+        <button
+  class="save-btn"
+  onclick="saveFavorite('Blinding Lights', 'The Weeknd', '#')"
+>
+  ❤️ Save Song
+</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TRENDING -->
+
+  <section class="section" id="trending">
+
+    <h2>📈 Trending Lyrics</h2>
+
+    <div class="song-container">
+
+      <div class="song-card">
+        <h3>One Dance</h3>
+        <p>Drake</p>
+
+        <a href="#">
+          View Lyrics
+        </a>
+      </div>
+
+      <div class="song-card">
+        <h3>Starboy</h3>
+        <p>The Weeknd</p>
+
+        <a href="#">
+          View Lyrics
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ARTISTS -->
+
+  <section class="section" id="artists">
+
+    <h2>🎤 Artist Spotlight</h2>
+
+    <div class="song-container">
+
+      <div class="song-card">
+        <h3>Travis Scott</h3>
+        <p>Utopia • Astroworld • Rodeo</p>
+      </div>
+
+      <div class="song-card">
+        <h3>The Weeknd</h3>
+        <p>Starboy • After Hours • Dawn FM</p>
+      </div>
+
+      <div class="song-card">
+        <h3>Drake</h3>
+        <p>Views • Scorpion • Take Care</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>NYOVETIC</h3>
+
+    <p>
+      For advertisements & business inquiries:
+    </p>
+
+    <p>
+      contact@nyovetic.com
+    </p>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
