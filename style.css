@@ -13,13 +13,21 @@
   z-index: -1;
 }
 
+/* SMOOTH SCROLL */
+
 html {
+
   scroll-behavior: smooth;
 }
 
+/* RESET */
+
 * {
+
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
 }
 
@@ -40,66 +48,97 @@ body {
   font-family: Arial, sans-serif;
 
   min-height: 100vh;
+
+  overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* LAYOUT */
 
-nav {
+.layout {
 
   display: flex;
+}
 
-  justify-content: space-between;
+/* SIDEBAR */
 
-  align-items: center;
+.sidebar {
 
-  padding: 20px 10%;
+  width: 250px;
+
+  height: 100vh;
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  padding: 40px 20px;
 
   background:
     rgba(255,255,255,0.05);
 
   backdrop-filter: blur(12px);
 
-  border-bottom:
+  border-right:
     1px solid rgba(255,255,255,0.1);
-
-  position: sticky;
-
-  top: 0;
 
   z-index: 1000;
 }
+
+/* LOGO */
 
 .logo {
 
   color: cyan;
 
-  font-size: 28px;
+  font-size: 30px;
 
   text-shadow:
     0 0 10px cyan;
+
+  margin-bottom: 40px;
 }
 
-nav ul {
+/* SIDEBAR MENU */
 
-  display: flex;
+.sidebar ul {
 
   list-style: none;
-
-  gap: 20px;
 }
 
-nav a {
+.sidebar li {
+
+  margin-bottom: 25px;
+}
+
+.sidebar a {
 
   color: white;
 
   text-decoration: none;
 
+  font-size: 18px;
+
   transition: 0.3s ease;
+
+  display: inline-block;
 }
 
-nav a:hover {
+.sidebar a:hover {
 
   color: cyan;
+
+  transform: translateX(5px);
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+
+  margin-left: 250px;
+
+  width: calc(100% - 250px);
 }
 
 /* HERO SECTION */
@@ -146,6 +185,8 @@ nav a:hover {
   justify-content: center;
 
   gap: 10px;
+
+  flex-wrap: wrap;
 }
 
 .search-box input {
@@ -167,6 +208,13 @@ nav a:hover {
 
   backdrop-filter: blur(10px);
 }
+
+.search-box input::placeholder {
+
+  color: #ccc;
+}
+
+/* SEARCH BUTTON */
 
 .search-box button {
 
@@ -311,6 +359,8 @@ nav a:hover {
 
   margin-bottom: 15px;
 }
+
+/* SONG TEXT */
 
 .song-card h3 {
 
@@ -483,21 +533,57 @@ footer p {
 
 @media (max-width: 768px) {
 
-  nav {
+  /* LAYOUT */
+
+  .layout {
 
     flex-direction: column;
-
-    gap: 15px;
-
-    padding: 20px;
   }
 
-  nav ul {
+  /* SIDEBAR */
+
+  .sidebar {
+
+    width: 100%;
+
+    height: auto;
+
+    position: relative;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
+  }
+
+  .sidebar ul {
+
+    display: flex;
 
     flex-wrap: wrap;
 
     justify-content: center;
+
+    gap: 20px;
   }
+
+  .sidebar li {
+
+    margin-bottom: 10px;
+  }
+
+  /* MAIN CONTENT */
+
+  .main-content {
+
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  /* HERO */
 
   .hero {
 
@@ -513,6 +599,8 @@ footer p {
 
     font-size: 16px;
   }
+
+  /* SEARCH */
 
   .search-box {
 
@@ -536,6 +624,8 @@ footer p {
     width: 90%;
   }
 
+  /* SONG CARDS */
+
   .song-container {
 
     justify-content: center;
@@ -547,6 +637,8 @@ footer p {
 
     max-width: 320px;
   }
+
+  /* LYRICS */
 
   .lyrics-box {
 
