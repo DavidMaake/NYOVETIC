@@ -344,3 +344,16 @@ footer p {
 .remove-btn:hover {
   background-color: red;
 }
+
+.song-card img {
+
+  width: 100%;
+
+  border-radius: 14px;
+
+  margin-bottom: 15px;
+
+  height: 220px;
+
+  object-fit: cover;
+}
