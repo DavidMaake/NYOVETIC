@@ -176,3 +176,48 @@ function removeFavorite(title) {
   displayFavorites();
 
 }
+
+/* PARTICLES BACKGROUND */
+
+tsParticles.load("tsparticles", {
+
+  background: {
+    color: "transparent"
+  },
+
+  particles: {
+
+    number: {
+      value: 60
+    },
+
+    color: {
+      value: "#00ffff"
+    },
+
+    links: {
+      enable: true,
+      color: "#00ffff",
+      distance: 150,
+      opacity: 0.2
+    },
+
+    move: {
+      enable: true,
+      speed: 1
+    },
+
+    opacity: {
+      value: 0.3
+    },
+
+    size: {
+      value: {
+        min: 1,
+        max: 4
+      }
+    }
+
+  }
+
+});
