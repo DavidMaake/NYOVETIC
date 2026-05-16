@@ -1,95 +1,184 @@
+/* =========================
+   SONG DATABASE
+========================= */
+
 const songs = [
+
   {
     title: "FE!N",
     artist: "Travis Scott",
-    page: "songs/fein.html"
+    page: "songs/fein.html",
+    image: "images/travis.png"
   },
 
   {
     title: "Blinding Lights",
     artist: "The Weeknd",
-    page: "#"
+    page: "#",
+    image: "images/the wekend.webp"
   },
 
   {
     title: "Starboy",
     artist: "The Weeknd",
-    page: "#"
+    page: "#",
+    image: "images/the wekend.webp"
   },
 
   {
     title: "One Dance",
     artist: "Drake",
-    page: "#"
+    page: "#",
+    image: "images/drake.jpg"
   }
+
 ];
 
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const suggestions = document.getElementById("suggestions");
+/* =========================
+   ELEMENTS
+========================= */
 
-/* LIVE SUGGESTIONS */
+const searchInput =
+  document.getElementById("searchInput");
 
-searchInput.addEventListener("input", function () {
+const searchButton =
+  document.getElementById("searchButton");
 
-  const value = searchInput.value.toLowerCase();
+const suggestions =
+  document.getElementById("suggestions");
 
-  suggestions.innerHTML = "";
+/* =========================
+   LIVE SEARCH SUGGESTIONS
+========================= */
 
-  if (value === "") return;
+if (searchInput) {
 
-  const filteredSongs = songs.filter(song =>
-    song.title.toLowerCase().includes(value) ||
-    song.artist.toLowerCase().includes(value)
-  );
+  searchInput.addEventListener("input", function () {
 
-  filteredSongs.forEach(song => {
+    const value =
+      searchInput.value.toLowerCase().trim();
 
-    const suggestionItem = document.createElement("div");
+    suggestions.innerHTML = "";
 
-    suggestionItem.classList.add("suggestion-item");
+    if (value === "") {
+      return;
+    }
 
-    suggestionItem.innerHTML = `
-      <strong>${song.title}</strong> - ${song.artist}
-    `;
+    const filteredSongs = songs.filter(song =>
 
-    suggestionItem.addEventListener("click", function () {
-      window.location.href = song.page;
+      song.title.toLowerCase().includes(value) ||
+
+      song.artist.toLowerCase().includes(value)
+
+    );
+
+    if (filteredSongs.length === 0) {
+
+      suggestions.innerHTML = `
+        <div class="suggestion-item">
+          No matching songs found.
+        </div>
+      `;
+
+      return;
+    }
+
+    filteredSongs.forEach(song => {
+
+      const suggestionItem =
+        document.createElement("div");
+
+      suggestionItem.classList.add(
+        "suggestion-item"
+      );
+
+      suggestionItem.innerHTML = `
+        <strong>${song.title}</strong>
+        <br>
+        <small>${song.artist}</small>
+      `;
+
+      suggestionItem.addEventListener(
+        "click",
+        function () {
+
+          window.location.href = song.page;
+        }
+      );
+
+      suggestions.appendChild(
+        suggestionItem
+      );
+
     });
-
-    suggestions.appendChild(suggestionItem);
 
   });
 
-});
+}
 
-/* SEARCH BUTTON */
+/* =========================
+   SEARCH BUTTON
+========================= */
 
-searchButton.addEventListener("click", function () {
+if (searchButton) {
 
-  const value = searchInput.value.toLowerCase();
+  searchButton.addEventListener(
+    "click",
+    function () {
 
-  const foundSong = songs.find(song =>
-    song.title.toLowerCase().includes(value) ||
-    song.artist.toLowerCase().includes(value)
+      const value =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+      const foundSong = songs.find(song =>
+
+        song.title
+          .toLowerCase()
+          .includes(value)
+
+        ||
+
+        song.artist
+          .toLowerCase()
+          .includes(value)
+
+      );
+
+      if (foundSong) {
+
+        window.location.href =
+          foundSong.page;
+      }
+
+      else {
+
+        alert(
+          "No matching songs found."
+        );
+      }
+
+    }
   );
 
-  if (foundSong) {
-    window.location.href = foundSong.page;
-  }
+}
 
-  else {
-    alert("No matching songs found.");
-  }
+/* =========================
+   SAVE FAVORITES
+========================= */
 
-});
-
-/* SAVE FAVORITES */
-
-function saveFavorite(title, artist, page) {
+function saveFavorite(
+  title,
+  artist,
+  page,
+  image
+) {
 
   let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
 
   const alreadyExists = favorites.find(
     song => song.title === title
@@ -98,56 +187,97 @@ function saveFavorite(title, artist, page) {
   if (!alreadyExists) {
 
     favorites.push({
+
       title,
       artist,
-      page
+      page,
+      image
+
     });
 
     localStorage.setItem(
+
       "favorites",
+
       JSON.stringify(favorites)
+
     );
 
     displayFavorites();
 
     alert("Song saved!");
+
+  }
+
+  else {
+
+    alert("Song already saved.");
+
   }
 
 }
 
-/* DISPLAY FAVORITES */
+/* =========================
+   DISPLAY FAVORITES
+========================= */
 
 function displayFavorites() {
 
   const favoritesContainer =
-    document.getElementById("favoritesContainer");
+
+    document.getElementById(
+      "favoritesContainer"
+    );
+
+  if (!favoritesContainer) return;
 
   const favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
 
   favoritesContainer.innerHTML = "";
 
+  if (favorites.length === 0) {
+
+    favoritesContainer.innerHTML = `
+      <p>No saved songs yet.</p>
+    `;
+
+    return;
+  }
+
   favorites.forEach(song => {
 
-    const card = document.createElement("div");
+    const card =
+      document.createElement("div");
 
     card.classList.add("song-card");
 
     card.innerHTML = `
-  <h3>${song.title}</h3>
-  <p>${song.artist}</p>
 
-  <a href="${song.page}">
-    View Lyrics
-  </a>
+      <img
+        src="${song.image}"
+        alt="${song.title}"
+      >
 
-  <button
-    class="remove-btn"
-    onclick="removeFavorite('${song.title}')"
-  >
-    ❌ Remove
-  </button>
-`;
+      <h3>${song.title}</h3>
+
+      <p>${song.artist}</p>
+
+      <a href="${song.page}">
+        View Lyrics
+      </a>
+
+      <button
+        class="remove-btn"
+        onclick="removeFavorite('${song.title}')"
+      >
+        ❌ Remove
+      </button>
+
+    `;
 
     favoritesContainer.appendChild(card);
 
@@ -155,67 +285,103 @@ function displayFavorites() {
 
 }
 
-displayFavorites();
-
-/* REMOVE FAVORITE */
+/* =========================
+   REMOVE FAVORITE
+========================= */
 
 function removeFavorite(title) {
 
   let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
 
   favorites = favorites.filter(
+
     song => song.title !== title
+
   );
 
   localStorage.setItem(
+
     "favorites",
+
     JSON.stringify(favorites)
+
   );
 
   displayFavorites();
 
 }
 
-/* PARTICLES BACKGROUND */
+/* =========================
+   INITIALIZE FAVORITES
+========================= */
+
+displayFavorites();
+
+/* =========================
+   PARTICLES BACKGROUND
+========================= */
 
 tsParticles.load("tsparticles", {
 
   background: {
+
     color: "transparent"
+
   },
 
   particles: {
 
     number: {
+
       value: 60
+
     },
 
     color: {
+
       value: "#00ffff"
+
     },
 
     links: {
+
       enable: true,
+
       color: "#00ffff",
+
       distance: 150,
+
       opacity: 0.2
+
     },
 
     move: {
+
       enable: true,
+
       speed: 1
+
     },
 
     opacity: {
+
       value: 0.3
+
     },
 
     size: {
+
       value: {
+
         min: 1,
         max: 4
+
       }
+
     }
 
   }
