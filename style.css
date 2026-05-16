@@ -132,6 +132,16 @@ body {
   transform: translateX(5px);
 }
 
+.sidebar a.active {
+
+  color: cyan;
+
+  text-shadow:
+    0 0 10px cyan;
+
+  transform: translateX(8px);
+}
+
 /* MAIN CONTENT */
 
 .main-content {
