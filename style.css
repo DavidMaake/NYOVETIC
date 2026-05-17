@@ -688,13 +688,122 @@ footer p {
 
 /* AUTH BUTTONS */
 
-.auth-buttons {
+/* AUTH CARD */
 
-  display: flex;
+.auth-card {
 
-  align-items: center;
+  margin-top: 40px;
 
-  gap: 10px;
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter: blur(12px);
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 20px rgba(0,255,255,0.08);
+}
+
+/* PROFILE */
+
+.user-profile {
+
+  margin-bottom: 20px;
+}
+
+.user-profile img {
+
+  width: 90px;
+
+  height: 90px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border:
+    3px solid cyan;
+
+  margin-bottom: 15px;
+}
+
+.user-profile h3 {
+
+  font-size: 20px;
+
+  margin-bottom: 8px;
+
+  color: white;
+}
+
+.user-profile p {
+
+  color: #aaa;
+
+  font-size: 14px;
+}
+
+/* BUTTONS */
+
+.auth-card button {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+/* LOGIN */
+
+#loginBtn {
+
+  background: cyan;
+
+  color: black;
+}
+
+#loginBtn:hover {
+
+  background: white;
+
+  transform: scale(1.03);
+}
+
+/* LOGOUT */
+
+#logoutBtn {
+
+  background: #ff0055;
+
+  color: white;
+
+  display: none;
+}
+
+#logoutBtn:hover {
+
+  background: #ff3377;
+
+  transform: scale(1.03);
 }
 
 .auth-buttons button {
