@@ -1,232 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NYOVETIC</title>
 
-  <link rel="icon" type="image/png" href="images/Beige Black Minimalist Modern Music Studio Font Logo.png">
+  <!-- WEBSITE ICON -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/Beige Black Minimalist Modern Music Studio Font Logo.png"
+  >
+
+  <!-- CSS -->
+
   <link rel="stylesheet" href="style.css" />
+
+  <!-- PARTICLES -->
+
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
 </head>
 
 <body>
+
+  <!-- PARTICLES BACKGROUND -->
+
   <div id="tsparticles"></div>
 
-  <!-- NAVBAR -->
+  <!-- LAYOUT -->
 
   <div class="layout">
 
-  <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
 
-  <aside class="sidebar">
+    <aside class="sidebar">
 
-    <h1 class="logo">NYOVETIC</h1>
+      <h1 class="logo">NYOVETIC</h1>
 
-   <ul>
+      <!-- NAVIGATION -->
 
-  <li>
-    <a href="#home" class="nav-link">
-      🏠 Home
-    </a>
-  </li>
+      <ul>
 
-  <li>
-    <a href="#freshdrops" class="nav-link">
-      🔥 Fresh Drops
-    </a>
-  </li>
+        <li>
+          <a href="#home" class="nav-link">
+            🏠 Home
+          </a>
+        </li>
 
-  <li>
-    <a href="#trending" class="nav-link">
-      📈 Trending
-    </a>
-  </li>
+        <li>
+          <a href="#freshdrops" class="nav-link">
+            🔥 Fresh Drops
+          </a>
+        </li>
 
-  <li>
-    <a href="#artists" class="nav-link">
-      🎤 Artists
-    </a>
-  </li>
+        <li>
+          <a href="#trending" class="nav-link">
+            📈 Trending
+          </a>
+        </li>
 
-</ul>
+        <li>
+          <a href="#artists" class="nav-link">
+            🎤 Artists
+          </a>
+        </li>
 
-  </aside>
+      </ul>
 
-  <!-- MAIN CONTENT -->
+      <!-- AUTH SECTION -->
 
-  <div class="main-content">
+      <div class="auth-buttons">
 
-  <!-- HERO SECTION -->
+        <button id="loginBtn">
+          Login With Google
+        </button>
 
-  <section class="hero" id="home">
+        <button id="logoutBtn">
+          Logout
+        </button>
 
-    <h2>Feel The Music Through Lyrics</h2>
+        <p id="userInfo">
+          Not logged in
+        </p>
 
-    <p>
-      Discover trending songs, fresh drops, and your favorite lyrics.
-    </p>
+      </div>
 
-    <!-- SEARCH BAR -->
+    </aside>
 
-    <div class="search-box">
+    <!-- MAIN CONTENT -->
 
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search songs or artists..."
-      >
+    <div class="main-content">
 
-      <button id="searchButton">
-        Search
-      </button>
+      <!-- HERO SECTION -->
+
+      <section class="hero" id="home">
+
+        <h2>Feel The Music Through Lyrics</h2>
+
+        <p>
+          Discover trending songs, fresh drops, and your favorite lyrics.
+        </p>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search songs or artists..."
+          >
+
+          <button id="searchButton">
+            Search
+          </button>
+
+        </div>
+
+        <!-- LIVE SEARCH SUGGESTIONS -->
+
+        <div id="suggestions"></div>
+
+      </section>
+
+      <!-- SAVED SONGS -->
+
+      <section class="section">
+
+        <h2>❤️ Saved Songs</h2>
+
+        <div
+          id="favoritesContainer"
+          class="song-container"
+        ></div>
+
+      </section>
+
+      <!-- FRESH DROPS -->
+
+      <section class="section" id="freshdrops">
+
+        <h2>🔥 Fresh Drops</h2>
+
+        <div class="song-container">
+
+          <!-- FEIN -->
+
+          <div class="song-card">
+
+            <img
+              src="images/travis.png"
+              alt="FE!N Cover"
+            >
+
+            <h3>FE!N</h3>
+
+            <p>Travis Scott</p>
+
+            <a href="Songs/fein.html">
+              View Lyrics
+            </a>
+
+            <button
+              class="save-btn"
+              onclick="saveFavorite('FE!N', 'Travis Scott', 'Songs/fein.html')"
+            >
+              ❤️ Save Song
+            </button>
+
+          </div>
+
+          <!-- BLINDING LIGHTS -->
+
+          <div class="song-card">
+
+            <img
+              src="images/the wekend.webp"
+              alt="Blinding Lights Cover"
+            >
+
+            <h3>Blinding Lights</h3>
+
+            <p>The Weeknd</p>
+
+            <a href="#">
+              View Lyrics
+            </a>
+
+            <button
+              class="save-btn"
+              onclick="saveFavorite('Blinding Lights', 'The Weeknd', '#')"
+            >
+              ❤️ Save Song
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TRENDING -->
+
+      <section class="section" id="trending">
+
+        <h2>📈 Trending Lyrics</h2>
+
+        <div class="song-container">
+
+          <div class="song-card">
+
+            <h3>One Dance</h3>
+
+            <p>Drake</p>
+
+            <a href="#">
+              View Lyrics
+            </a>
+
+          </div>
+
+          <div class="song-card">
+
+            <h3>Starboy</h3>
+
+            <p>The Weeknd</p>
+
+            <a href="#">
+              View Lyrics
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ARTISTS -->
+
+      <section class="section" id="artists">
+
+        <h2>🎤 Artist Spotlight</h2>
+
+        <div class="song-container">
+
+          <div class="song-card">
+
+            <h3>Travis Scott</h3>
+
+            <p>Utopia • Astroworld • Rodeo</p>
+
+          </div>
+
+          <div class="song-card">
+
+            <h3>The Weeknd</h3>
+
+            <p>Starboy • After Hours • Dawn FM</p>
+
+          </div>
+
+          <div class="song-card">
+
+            <h3>Drake</h3>
+
+            <p>Views • Scorpion • Take Care</p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- FOOTER -->
+
+      <footer>
+
+        <h3>NYOVETIC</h3>
+
+        <p>
+          For advertisements & business inquiries:
+        </p>
+
+        <p>
+          contact@nyovetic.com
+        </p>
+
+      </footer>
 
     </div>
 
-    <div id="suggestions"></div>
+  </div>
 
-  </section>
-
-  <!-- RECENT SEARCHES -->
-
-  <!-- FAVORITES -->
-
-<section class="section">
-
-  <h2>❤️ Saved Songs</h2>
-
-  <div id="favoritesContainer" class="song-container"></div>
-
-</section>
-
-  <!-- FRESH DROPS -->
-
-  <section class="section" id="freshdrops">
-
-    <h2>🔥 Fresh Drops</h2>
-
-    <div class="song-container">
-
-      <div class="song-card">
-
-        <img src="images/travis.png" alt="FE!N Cover">
-
-        <h3>FE!N</h3>
-        <p>Travis Scott</p>
-
-        <a href="songs/fein.html">
-          View Lyrics
-        </a>
-        <button
-  class="save-btn"
-  onclick="saveFavorite('FE!N', 'Travis Scott', 'songs/fein.html')"
->
-  ❤️ Save Song
-</button>
-
-      </div>
-
-      <div class="song-card">
-
-        <img src="images/the wekend.webp" alt="Blinding Lights Cover">
-
-        <h3>Blinding Lights</h3>
-        <p>The Weeknd</p>
-
-        <a href="#">
-          View Lyrics
-        </a>
-        <button
-  class="save-btn"
-  onclick="saveFavorite('Blinding Lights', 'The Weeknd', '#')"
->
-  ❤️ Save Song
-</button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TRENDING -->
-
-  <section class="section" id="trending">
-
-    <h2>📈 Trending Lyrics</h2>
-
-    <div class="song-container">
-
-      <div class="song-card">
-        <h3>One Dance</h3>
-        <p>Drake</p>
-
-        <a href="#">
-          View Lyrics
-        </a>
-      </div>
-
-      <div class="song-card">
-        <h3>Starboy</h3>
-        <p>The Weeknd</p>
-
-        <a href="#">
-          View Lyrics
-        </a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ARTISTS -->
-
-  <section class="section" id="artists">
-
-    <h2>🎤 Artist Spotlight</h2>
-
-    <div class="song-container">
-
-      <div class="song-card">
-        <h3>Travis Scott</h3>
-        <p>Utopia • Astroworld • Rodeo</p>
-      </div>
-
-      <div class="song-card">
-        <h3>The Weeknd</h3>
-        <p>Starboy • After Hours • Dawn FM</p>
-      </div>
-
-      <div class="song-card">
-        <h3>Drake</h3>
-        <p>Views • Scorpion • Take Care</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h3>NYOVETIC</h3>
-
-    <p>
-      For advertisements & business inquiries:
-    </p>
-
-    <p>
-      contact@nyovetic.com
-    </p>
-
-  </footer>
-
-</div>
-</div>
+  <!-- MAIN JAVASCRIPT -->
 
   <script src="script.js"></script>
 
+  <!-- FIREBASE -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+
+      getAuth,
+
+      GoogleAuthProvider,
+
+      signInWithPopup,
+
+      signOut,
+
+      onAuthStateChanged
+
+    }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    /* FIREBASE CONFIG */
+
+    const firebaseConfig = {
+
+      apiKey:
+        "AIzaSyAvW3Gcn9C_r7oEM7QXcwJdtTnFXesFV1A",
+
+      authDomain:
+        "nyovetic.firebaseapp.com",
+
+      projectId:
+        "nyovetic",
+
+      storageBucket:
+        "nyovetic.firebasestorage.app",
+
+      messagingSenderId:
+        "470840410047",
+
+      appId:
+        "1:470840410047:web:515a6877ad8e22a70c6b0a",
+
+      measurementId:
+        "G-64LY2XZXDT"
+
+    };
+
+    /* INITIALIZE FIREBASE */
+
+    const app =
+      initializeApp(firebaseConfig);
+
+    const auth =
+      getAuth(app);
+
+    const provider =
+      new GoogleAuthProvider();
+
+    /* ELEMENTS */
+
+    const loginBtn =
+      document.getElementById("loginBtn");
+
+    const logoutBtn =
+      document.getElementById("logoutBtn");
+
+    const userInfo =
+      document.getElementById("userInfo");
+
+    /* LOGIN */
+
+    loginBtn.addEventListener("click", () => {
+
+      signInWithPopup(auth, provider)
+
+        .then((result) => {
+
+          const user = result.user;
+
+          userInfo.innerHTML =
+            `👋 ${user.displayName}`;
+
+        })
+
+        .catch((error) => {
+
+          alert(error.message);
+
+        });
+
+    });
+
+    /* LOGOUT */
+
+    logoutBtn.addEventListener("click", () => {
+
+      signOut(auth);
+
+    });
+
+    /* AUTH STATE */
+
+    onAuthStateChanged(auth, (user) => {
+
+      if (user) {
+
+        userInfo.innerHTML =
+          `👋 ${user.displayName}`;
+
+      }
+
+      else {
+
+        userInfo.innerHTML =
+          "Not logged in";
+
+      }
+
+    });
+
+  </script>
+
 </body>
+
 </html>
