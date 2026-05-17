@@ -73,21 +73,45 @@
 
       </ul>
 
-      <!-- AUTH SECTION -->
+      <!-- NEW AUTH CARD -->
 
-      <div class="auth-buttons">
+      <div class="auth-card">
+
+        <!-- PROFILE -->
+
+        <div class="user-profile">
+
+          <img
+            id="userAvatar"
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            alt="User Avatar"
+          >
+
+          <h3 id="userName">
+            Welcome Guest
+          </h3>
+
+          <p id="userStatus">
+            Sign in to save your experience
+          </p>
+
+        </div>
+
+        <!-- LOGIN -->
 
         <button id="loginBtn">
-          Login With Google
+
+          Continue With Google
+
         </button>
+
+        <!-- LOGOUT -->
 
         <button id="logoutBtn">
-          Logout
-        </button>
 
-        <p id="userInfo">
-          Not logged in
-        </p>
+          Logout
+
+        </button>
 
       </div>
 
@@ -372,8 +396,14 @@
     const logoutBtn =
       document.getElementById("logoutBtn");
 
-    const userInfo =
-      document.getElementById("userInfo");
+    const userName =
+      document.getElementById("userName");
+
+    const userStatus =
+      document.getElementById("userStatus");
+
+    const userAvatar =
+      document.getElementById("userAvatar");
 
     /* LOGIN */
 
@@ -385,8 +415,20 @@
 
           const user = result.user;
 
-          userInfo.innerHTML =
+          userName.innerHTML =
             `👋 ${user.displayName}`;
+
+          userStatus.innerHTML =
+            "You are successfully logged in.";
+
+          userAvatar.src =
+            user.photoURL;
+
+          loginBtn.style.display =
+            "none";
+
+          logoutBtn.style.display =
+            "block";
 
         })
 
@@ -402,7 +444,20 @@
 
     logoutBtn.addEventListener("click", () => {
 
-      signOut(auth);
+      signOut(auth)
+
+        .then(() => {
+
+          userName.innerHTML =
+            "Welcome Guest";
+
+          userStatus.innerHTML =
+            "Sign in to save your experience";
+
+          userAvatar.src =
+            "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
+        });
 
     });
 
@@ -412,16 +467,38 @@
 
       if (user) {
 
-        userInfo.innerHTML =
+        userName.innerHTML =
           `👋 ${user.displayName}`;
 
+        userStatus.innerHTML =
+          "Welcome back to NYOVETIC.";
+
+        userAvatar.src =
+          user.photoURL;
+
+        loginBtn.style.display =
+          "none";
+
+        logoutBtn.style.display =
+          "block";
       }
 
       else {
 
-        userInfo.innerHTML =
-          "Not logged in";
+        userName.innerHTML =
+          "Welcome Guest";
 
+        userStatus.innerHTML =
+          "Sign in to save your experience";
+
+        userAvatar.src =
+          "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
+        loginBtn.style.display =
+          "block";
+
+        logoutBtn.style.display =
+          "none";
       }
 
     });
