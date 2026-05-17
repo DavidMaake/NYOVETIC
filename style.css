@@ -685,3 +685,47 @@ footer p {
   box-shadow:
     0 0 25px rgba(0,255,255,0.2);
 }
+
+/* AUTH BUTTONS */
+
+.auth-buttons {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.auth-buttons button {
+
+  padding: 10px 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background-color: cyan;
+
+  color: black;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.auth-buttons button:hover {
+
+  background-color: white;
+
+  transform: scale(1.05);
+}
+
+#userInfo {
+
+  color: white;
+
+  font-size: 14px;
+}
